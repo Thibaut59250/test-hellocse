@@ -22,25 +22,54 @@
                 <label class="col-md-4" for="description">Description :</label>
                 <textarea class="col-md-8" id="description" v-model="star.description" cols="80" rows="5"></textarea>
             </div>
+            <div class="row">
+                <div class="col-md-8"></div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-success" v-on:click="enregistrer(star)">Enregistrer</button>
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-danger" @click="supprimer(star)">Supprimer</button>
+                </div>
+            </div>
+
         </form>
     </div>
 </template>
 <script>
 export default {
+
     props: [
-        'stars'
+        'stars','ajouter','modifier','supprimer'
     ],
     data: function () {
+
         return {
             stars_decode: [],
             star_actuelle: 0,
         }
     },
     mounted() {
+
         this.stars_decode = JSON.parse(this.stars);
 
         // Au chargement, on affiche la première star par défaut
         this.star_actuelle = this.stars_decode[0].id;
-    }
+    },
+    methods: {
+
+        enregistrer: function(star){
+
+            $.ajax({
+                type: "POST",
+                url: this.modifier,
+                data: star,
+            });
+        },
+
+        supprimer: function(star){
+
+
+        },
+    },
 }
 </script>

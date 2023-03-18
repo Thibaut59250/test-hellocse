@@ -18,3 +18,9 @@ Route::get('/', [\App\Http\Controllers\AccueilController::class, 'afficher_accue
 Auth::routes();
 
 Route::get('/admin-star', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::post('/ajouter', [App\Http\Controllers\StarController::class, 'ajouter'])->name('ajouter');
+
+Route::post('/modifier', [App\Http\Controllers\StarController::class, 'modifier'])->name('modifier');
+
+Route::post('/supprimer', [App\Http\Controllers\StarController::class, 'supprimer'])->name('supprimer');

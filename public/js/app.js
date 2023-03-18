@@ -23114,7 +23114,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['stars'],
+  props: ['stars', 'ajouter', 'modifier', 'supprimer'],
   data: function data() {
     return {
       stars_decode: [],
@@ -23126,6 +23126,16 @@ __webpack_require__.r(__webpack_exports__);
 
     // Au chargement, on affiche la première star par défaut
     this.star_actuelle = this.stars_decode[0].id;
+  },
+  methods: {
+    enregistrer: function enregistrer(star) {
+      $.ajax({
+        type: "POST",
+        url: this.modifier,
+        data: star
+      });
+    },
+    supprimer: function supprimer(star) {}
   }
 });
 
@@ -23259,6 +23269,20 @@ var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
   "for": "description"
 }, "Description :", -1 /* HOISTED */);
 var _hoisted_14 = ["onUpdate:modelValue"];
+var _hoisted_15 = {
+  "class": "row"
+};
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "col-md-8"
+}, null, -1 /* HOISTED */);
+var _hoisted_17 = {
+  "class": "col-md-2"
+};
+var _hoisted_18 = ["onClick"];
+var _hoisted_19 = {
+  "class": "col-md-2"
+};
+var _hoisted_20 = ["onClick"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_tempalte = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("tempalte");
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.stars_decode, function (star) {
@@ -23293,7 +23317,19 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       },
       cols: "80",
       rows: "5"
-    }, null, 8 /* PROPS */, _hoisted_14), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, star.description]])])])], 512 /* NEED_PATCH */)), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, _ctx.star_actuelle == star.id]]);
+    }, null, 8 /* PROPS */, _hoisted_14), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, star.description]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [_hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+      type: "button",
+      "class": "btn btn-success",
+      onClick: function onClick($event) {
+        return $options.enregistrer(star);
+      }
+    }, "Enregistrer", 8 /* PROPS */, _hoisted_18)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+      type: "button",
+      "class": "btn btn-danger",
+      onClick: function onClick($event) {
+        return $options.supprimer(star);
+      }
+    }, "Supprimer", 8 /* PROPS */, _hoisted_20)])])])], 512 /* NEED_PATCH */)), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, _ctx.star_actuelle == star.id]]);
   }), 256 /* UNKEYED_FRAGMENT */))], 64 /* STABLE_FRAGMENT */);
 }
 
