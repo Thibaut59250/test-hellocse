@@ -15,7 +15,7 @@
             </div>
         </div>
         <div class="text">
-            {{ star.nom }}
+            {{ star.description }}
         </div>
     </div>
 </template>

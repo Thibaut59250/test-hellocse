@@ -14,3 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [\App\Http\Controllers\AccueilController::class, 'afficher_accueil']);
+
+Auth::routes();
+
+Route::get('/admin-star', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
