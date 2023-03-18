@@ -8,19 +8,19 @@
     <div v-for="star in stars_decode" class="card_star_edit" v-show="star_actuelle == star.id">
         <form>
             <div class="photo_nom">
-                <div class="photo">
-                    <img :src="'storage/'+star.url_photo">
-                    <label for="photo">Changer la photo</label>
-                    <input  id="photo" type="file">
+                <div class="row photo">
+                    <img class="col-md-12" :src="'storage/'+star.url_photo">
+                    <label class="col-md-4" for="photo">Changer la photo</label>
+                    <input class="col-md-8" id="photo" type="file">
                 </div>
-                <div class="nom">
-                    <label for="nom">Nom :</label>
-                    <input id="nom" type="text" v-model="star.nom">
+                <div class="row nom">
+                    <label class="col-md-4" for="nom">Nom :</label>
+                    <input class="col-md-8" id="nom" type="text" v-model="star.nom">
                 </div>
             </div>
-            <div class="text">
-                <label for="description">Description :</label><br>
-                <textarea id="description" v-model="star.description" cols="80" rows="5"></textarea>
+            <div class="row text">
+                <label class="col-md-4" for="description">Description :</label>
+                <textarea class="col-md-8" id="description" v-model="star.description" cols="80" rows="5"></textarea>
             </div>
         </form>
     </div>
