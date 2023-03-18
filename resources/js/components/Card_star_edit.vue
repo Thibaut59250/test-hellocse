@@ -1,5 +1,5 @@
 <template>
-    <div class="liste_stars">
+    <div class="liste_stars_edit">
         <tempalte v-for="star in stars_decode"  >
             <button type="button" :class="star_actuelle == star.id ? 'btn btn-light' : 'btn btn-secondary'" @click="star_actuelle = star.id">{{ star.nom }}</button>
         </tempalte>
@@ -11,8 +11,8 @@
             <div class="photo_nom">
                 <div class="row photo">
                     <img class="col-md-12" :src="'storage/'+star.url_photo">
-                    <label class="col-md-4" for="photo">Changer la photo</label>
-                    <input class="col-md-8" id="photo" type="file">
+                    <!--<label class="col-md-4" for="photo">Changer la photo</label>
+                    <input class="col-md-8" id="photo" type="file">-->
                 </div>
                 <div class="row nom">
                     <label class="col-md-4" for="nom">Nom :</label>
