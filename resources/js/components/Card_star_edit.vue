@@ -3,6 +3,7 @@
         <tempalte v-for="star in stars_decode"  >
             <button type="button" :class="star_actuelle == star.id ? 'btn btn-light' : 'btn btn-secondary'" @click="star_actuelle = star.id">{{ star.nom }}</button>
         </tempalte>
+        <button type="button" :class="star_actuelle == -1 ? 'btn btn-light' : 'btn btn-secondary'" @click="star_actuelle = -1; stars_decode.push(star_defaut)">+</button>
     </div>
 
     <div v-for="star in stars_decode" class="card_star_edit" v-show="star_actuelle == star.id">
@@ -34,18 +35,25 @@
 
         </form>
     </div>
+
 </template>
 <script>
 export default {
 
     props: [
-        'stars','ajouter','modifier','supprimer'
+        'stars','modifier','supprimer'
     ],
     data: function () {
 
         return {
             stars_decode: [],
             star_actuelle: 0,
+            star_defaut: {
+                id: -1,
+                nom: 'NOM',
+                description: 'DESCRIPTION',
+                url_photo: 'placeholder-user.jpg'
+            }
         }
     },
     mounted() {
@@ -68,7 +76,14 @@ export default {
 
         supprimer: function(star){
 
+            $.ajax({
+                type: "POST",
+                url: this.supprimer,
+                data: star,
+            });
 
+            this.stars_decode.splice(this.stars_decode.indexOf(star), 1);
+            this.star_actuelle = this.stars_decode[0].id;
         },
     },
 }

@@ -22,7 +22,7 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        <card_star_edit stars="{{ json_encode($stars) }}" modifier="{{ URL::route("modifier") }}" supprimer="{{ URL::route("supprimer") }}" ajouter="{{ URL::route("ajouter") }}"/>
+                        <card_star_edit stars="{{ json_encode($stars) }}" modifier="{{ URL::route("modifier") }}" supprimer="{{ URL::route("supprimer") }}"/>
                     </div>
                 </div>
             </div>

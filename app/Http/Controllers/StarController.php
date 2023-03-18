@@ -12,27 +12,24 @@ class StarController extends Controller
 
     /*
      *
-     * Ajoute une star dans la BDD
-     *
-     */
-    public function ajouter(Request $star){
-
-
-    }
-
-    /*
-     *
      * Supprime une star dans la BDD
      *
      */
-    public function supprimer(Request $star){
+    public function supprimer(Request $formulaire){
 
+        $star = $formulaire->all();
 
+        $star_db = Stars::find($star['id']);
+
+        if($star_db == null)
+            return;
+
+        $star_db->delete();
     }
 
     /*
      *
-     * Modifie une star dans la BDD
+     * Modifie une star dans la BDD ou la modifie
      *
      */
     public function modifier(Request $formulaire){
@@ -40,6 +37,9 @@ class StarController extends Controller
         $star = $formulaire->all();
 
         $star_db = Stars::find($star['id']);
+
+        if($star_db == null)
+            $star_db = new Stars();
 
         $star_db->nom = $star['nom'];
         $star_db->description = $star['description'];
