@@ -13,6 +13,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('vue_utilisateur');
-});
+Route::get('/', [\App\Http\Controllers\AccueilController::class, 'afficher_accueil']);
